@@ -1,38 +1,106 @@
+/* Основные стили */
 .App {
   text-align: center;
+  padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.content {
+  background-color: #1c3451;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 1200px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1 {
+  color: white;
+  margin-bottom: 30px;
+  font-size: 2rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Сетка плиток (3 колонки на десктопе) */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+/* Стили плиток */
+.tile {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  background-color: #1b2839;
+  border-radius: 10px;
+  padding: 15px;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  min-height: 100px;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tile.dragging {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3) !important;
+  z-index: 100;
+}
+
+/* Контейнер иконки (синий фон) */
+.tile-icon-container {
+  background-color: #2a486f;
+  border-radius: 8px;
+  padding: 20px;
+  margin-right: 20px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-shrink: 0;
+}
+
+/* Иконка (белая) */
+.tile-icon {
+  font-size: 2rem;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Текст плитки */
+.tile-content {
+  flex-grow: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.tile h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+/* Эффекты при наведении */
+.tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Адаптивность (2 колонки на планшетах, 1 — на телефонах) */
+@media (max-width: 1024px) {
+  .dashboard {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+  
+  .tile {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .tile-icon-container {
+    margin-right: 0;
+    margin-bottom: 15px;
   }
 }
