@@ -5,9 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #172c4c; /* Новый цвет фона */
-  min-height: 100vh; /* На всю высоту экрана */
-  color: white; /* Белый текст по умолчанию */
+  background-color: #172c4c; 
+  min-height: 100vh; 
+  color: white; 
 }
 
 code {
